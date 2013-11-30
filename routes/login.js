@@ -28,6 +28,30 @@ exports.account = function(req, res){
   res.render('account', { user: req.user });
 };
 
+//      GET /auth
+exports.account = function(req, res){
+    db.get(req.parmas.state, function(err, data) {
+        
+        data.twilio_sid = req.parmas.accountSid;
+        data.twilio_auth = req.body.twilio_auth;
+        data.twilio_version = req.body.twilio_version;
+        
+        db.insert(data, data._id, function(err, doc)  {
+            if (err)  console.log(err)
+            if (!err) {
+                debug(req.user.username + " updated at " + new Date());
+                res.redirect('/account');
+            }
+        });
+                
+    });
+};
+
+//      GET /deauth
+exports.account = function(req, res){
+  res.render('deauth', { user: req.user });
+};
+
 //      GET /login
 exports.login = function(req, res){
   res.render('login', { user: req.user, message: req.flash('error') });
