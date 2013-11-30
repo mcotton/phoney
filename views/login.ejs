@@ -1,0 +1,64 @@
+<div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Application</li>
+              <li><a href="/"><i class="icon-home"></i> Home</a></li>
+              <li><a href="/gettingstarted"><i class="icon-book"></i> Getting Started</a></li>
+              <li><a href="/account"><i class="icon-wrench"></i> Settings</a></li>
+              <li><a href="/about"><i class="icon-question-sign"></i> About</a></li>
+              <li><a href="/contacts"><i class="icon-envelope"></i> Contact</a></li>
+              <% if(user) { %>
+              <li class="nav-header">Phone Calls</li>
+              <li><a href="/phone/bydate"><i class="icon-arrow-up"></i> Sort by Date</a></li>
+              <li><a href="/phone/bycaller"><i class="icon-filter"></i> Filter by caller</a></li>
+              <li><a href="/phone/byreceiver"><i class="icon-filter"></i> Filter by receiver</a></li>
+              <li><a href="/phone/byareacode"><i class="icon-filter"></i> Filter by area code</a></li>
+              <li><a href="/phone/bydirection"><i class="icon-filter"></i> Filter by direction</a></li>
+              <li ><a href="/phone/bystatus"><i class="icon-filter"></i> Filter by status</a></li>
+              <li class="nav-header">SMS Messages</li>
+              <li><a href="/sms/bydate"><i class="icon-arrow-up"></i> Sort by Date</a></li>
+              <li><a href="/sms/bycaller"><i class="icon-filter"></i> Filter by caller</a></li>
+              <li><a href="/sms/byreceiver"><i class="icon-filter"></i> Filter by receiver</a></li>
+              <% } %>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span5">
+          <div class="well">
+            <form action="/login" method="post" id="login_form">
+            	<div>
+            	   <h2>Existing Customer Login</h2>
+            	   <% if (message){ %>
+            	       <p><%= message %></p>
+            	   <% } %>
+            	<hr>
+            	   <label>Username:</label>
+            	   <input type="text" name="username" id='login_userform'/><br/>
+            	</div>
+            	<div>
+            	   <label>Password:</label>
+            	   <input type="password" name="password" id='login_passform'/>
+            	</div>
+            	<div>
+            	   <input type="submit" value="Log in" id="login_submit"/>
+            	</div>
+            </form>
+          </div>  
+        </div><!--/span-->
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <p>&copy; Subtle Controls 2012</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+    <script>
+    $(document).ready(function() {
+        
+        $('#login_userform').focus();
+    });
+    </script>

@@ -1,0 +1,11 @@
+scratchpad.js
+.monitor
+node_modules/
+*.swp
+.DS_Store
+npm-debug.log
+output.js
+repl.js
+logs/
+pids/
+bouncy.json

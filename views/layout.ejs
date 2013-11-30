@@ -1,0 +1,90 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Subtlecontrols Analyzer</title>
+  <meta name="description" content="">
+
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+	<style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+    </style>
+  <link rel="stylesheet" href="/stylesheets/bootstrap-responsive.css">
+
+  <script src="/javascripts/libs/modernizr-2.5.3.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="/javascripts/libs/jquery-1.7.1.min.js"><\/script>')</script>
+  <script src="/javascripts/libs/bootstrap/bootstrap.min.js"></script>
+  <script src="/javascripts/libs/underscore.js"></script>
+  <script src="/javascripts/libs/backbone.js"></script>
+  <script src="/javascripts/plugins.js"></script>
+  <script src="/javascripts/script.js"></script>
+  <script src="/javascripts/app.js"></script>
+  
+  
+
+</head>
+<body>
+  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+  <header>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="brand hidden-phone" href="#">Subtlecontrols Analyzer</a>
+          <ul class="nav">
+            <li id="loadingDiv"><a>Loading...</a</li>
+          </ul>
+          <div class="btn-group pull-right">
+            <% if (!user) { %> 
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="/login">
+            <% } else { %>
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+            <% } %>
+              <i class="icon-user"></i> <% if (!user) { %> Sign In <% } else { %> <%= user.username %> <% } %>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="/account"><i class="icon-wrench"></i> Settings</a></li>
+              <li class="divider"></li>
+              <li><a href="/logout"><i class="icon-briefcase"></i>  Sign Out</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id='user_id' name='<% if(user) { %> <%= user.twilio_sid %> <% } %>'></div>
+  </header>
+  <div role="main">
+    <%- body %>
+  </div>
+  <footer>
+      
+  </footer>
+  <!--
+  <script src="/javascripts/libs/bootstrap/transition.js"></script>
+  <script src="/javascripts/libs/bootstrap/alert.js"></script>
+  <script src="/javascripts/libs/bootstrap/modal.js"></script> -->
+  <script src="/javascripts/libs/bootstrap/dropdown.js"></script>
+  <!--
+  <script src="/javascripts/libs/bootstrap/scrollspy.js"></script>
+  <script src="/javascripts/libs/bootstrap/tab.js"></script>
+  <script src="/javascripts/libs/bootstrap/tooltip.js"></script>
+  <script src="/javascripts/libs/bootstrap/popover.js"></script>
+  <script src="/javascripts/libs/bootstrap/button.js"></script>
+  <script src="/javascripts/libs/bootstrap/collapse.js"></script>
+  <script src="/javascripts/libs/bootstrap/carousel.js"></script>
+  <script src="/javascripts/libs/bootstrap/typeahead.js"></script> -->
+
+</body>
+</html>

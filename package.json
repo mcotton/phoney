@@ -1,0 +1,21 @@
+{
+  "version": "0.0.1-23",
+  "private": true,
+  "dependencies": {
+    "express": "2.5.10",
+    "ejs": ">= 0.0.1",
+    "request": ">= 0.0.1",
+    "passport": "0.1.x",
+    "passport-local": "0.1.x",
+    "follow": "0.8.x",
+    "nano": "3.0.x"
+  },
+  "subdomain": "subtle-analyze",
+  "scripts": {
+    "start": "app.js"
+  },
+  "engines": {
+    "node": "0.8.x"
+  },
+  "name": "subtle-analyze2"
+}

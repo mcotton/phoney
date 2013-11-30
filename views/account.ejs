@@ -1,0 +1,91 @@
+<div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Application</li>
+              <li><a href="/"><i class="icon-home"></i> Home</a></li>
+              <li><a href="/gettingstarted"><i class="icon-book"></i> Getting Started</a></li>
+              <li class="active"><a href="/account"><i class="icon-wrench"></i> Settings</a></li>
+              <li><a href="/about"><i class="icon-question-sign"></i> About</a></li>
+              <li><a href="/contacts"><i class="icon-envelope"></i> Contact</a></li>
+              <% if(user) { %>
+              <li class="nav-header">Phone Calls</li>
+              <li><a href="/phone/bydate"><i class="icon-arrow-down"></i> Sort by Date</a></li>
+              <li><a href="/phone/bycaller"><i class="icon-filter"></i> Filter by caller</a></li>
+              <li><a href="/phone/byreceiver"><i class="icon-filter"></i> Filter by receiver</a></li>
+              <li><a href="/phone/byareacode"><i class="icon-filter"></i> Filter by area code</a></li>
+              <li><a href="/phone/bydirection"><i class="icon-filter"></i> Filter by direction</a></li>
+              <li ><a href="/phone/bystatus"><i class="icon-filter"></i> Filter by status</a></li>
+              <li class="nav-header">SMS Messages</li>
+              <li><a href="/sms/bydate"><i class="icon-arrow-down"></i> Sort by Date</a></li>
+              <li><a href="/sms/bycaller"><i class="icon-filter"></i> Filter by caller</a></li>
+              <li><a href="/sms/byreceiver"><i class="icon-filter"></i> Filter by receiver</a></li>
+              <% } %>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+          <div class="well">
+            <dl class="dl-horizontal">
+                <dt>CouchDB _id:</dt><dd><%= user._id %></dd>
+                <dt>CouchDB _rev:</dt><dd><%= user._rev %></dd>
+                <dt>Last Update:</dt><dd><%= user.last_update %></dd>
+                <hr>                
+                <form method="post" action="/update">
+                <dt>Username:</dt> <dd><input type="text" name="username" value="<%= user.username %>"></dd>
+                <dt>Password:</dt> <dd><input type="password" name="password" value="<%= user.password %>"></dd>
+                <dt>Email:</dt> <dd><input type="text" name="email" value="<%= user.email %>"></dd>
+                <hr>
+                <dt>Connect to twilio</dt><dd>
+                    <style type="text/css">
+                    #twilio-connect-button {
+                    	background: url(https://www.twilio.com/packages/connect-apps/images/connect-button.png);
+                    	width: 130px; height: 34px; display: block;
+                    }
+                    #twilio-connect-button:hover { background-position: 0 34px; }
+                    </style>
+                    <a href="https://www.twilio.com/authorize/CNe604c662c0f903b459a24c083ea6273a" id="twilio-connect-button"></a>
+                </dd>
+                <br>
+                <dt>Twilio SID:</dt> <dd><%= user.twilio_sid %></dd>
+                <dt>Twilio API Version:</dt> <dd><%= user.twilio_APIversion %></dd>
+                <dt># of Calls:</dt> <dd><% if(user.phone) { %><%= user.phone.calls_total %> <% } else { %> 0 <% } %></dd>
+                <dt># of Texts:</dt> <dd><% if(user.sms) {  %> <%= user.sms.total %> <% } else { %> 0 <% } %></dd>
+                <dt># of Recordings:</dt> <dd><% if(user.rec) { %> <%= user.rec.total %> <% } else { %> 0 <% } %></dd>
+                <dt>Refresh Calls</dt><dd><a href="/#" id="refresh-phone"><i class="icon-refresh"></i></a></dd>
+                <dt>Refresh SMSs</dt><dd><a href="/#" id="refresh-sms"><i class="icon-refresh"></i></a></dd>
+                <hr>
+                <dd><input type="submit" class="btn btn-info" id="update_account_page" value="Apply Changes"></button></dd>
+                
+                </form>
+            </dl>
+          </div>
+        </div><!--/span-->
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <p>&copy; Subtle Controls 2012</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+    
+    <script>
+    /*
+    $('#update_account_page').click(function() {
+        body = {
+            last_upadte: $('#last_update').value,
+            username: $('#username').value,
+            password: $('#password').value,
+            email: $('#email').value
+        };
+        
+        $.post('/update', function(data) {
+           //console.log(data);
+        }); 
+        
+    });
+    */
+    </script>
