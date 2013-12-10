@@ -4,7 +4,7 @@
     <td><a href="/phone/callerdetail/#%= from %#">#%= from_formatted %#</a></td>
     <td>#%= to_formatted %#</td>
     <td>#%= start_time.slice(5,25) %#</td>
-    <td class="hidden-phone">#%= duration>60 ? Math.floor(duration ? 60) : 0  %#:#%= duration % 60 %#</td>
+    <td class="hidden-phone">#% print( Math.floor(duration/60)) %#:#% if(duration % 60 < 10) { print('0' + duration % 60) } else { print(duration%60) } %#</td>
 </script>
 
 <div class="container-fluid">
@@ -47,7 +47,7 @@
                     <a href='#sortDateUp'><i class="icon-chevron-up"></i></a>
                     <a href='#sortDateDown'><i class="icon-chevron-down"></i></a>
                     </td>
-                    <td class="hidden-phone" id='sort_by_length'>Length (seconds)
+                    <td class="hidden-phone" id='sort_by_length'>Length
                     <a href='#sortLengthUp'><i class="icon-chevron-up"></i></a>
                     <a href='#sortLengthDown'><i class="icon-chevron-down"></i></a>
                     </td>
