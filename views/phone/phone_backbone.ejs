@@ -4,7 +4,7 @@
     <td><a href="/phone/callerdetail/#%= from %#">#%= from_formatted %#</a></td>
     <td>#%= to_formatted %#</td>
     <td>#%= start_time.slice(5,25) %#</td>
-    <td class="hidden-phone">#%= duration %#</td>
+    <td class="hidden-phone">#%= duration>60 ? Math.floor(duration ? 60) : 0  %#:#%= duration % 60 %#</td>
 </script>
 
 <div class="container-fluid">
