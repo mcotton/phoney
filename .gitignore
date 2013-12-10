@@ -9,3 +9,6 @@ repl.js
 logs/
 pids/
 bouncy.json
+err.log
+out.log
+

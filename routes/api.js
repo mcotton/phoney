@@ -72,18 +72,23 @@ exports.phone = function(req, res){
 
 //      GET /api/v1/phone/by_date/:id
 exports.phone_calls_by_date = function(req, res){
-    db.view('phone','by_date', {key: req.user.twilio_sid }, function(err, body) {
-        if (err) console.log(err);
-        if (!err) {
-            debug('Found CouchDB phone/by_date document');
-            res.json(body);
+    if(req.user.twilio_sid) {
+        db.view('phone','by_date', {key: req.user.twilio_sid }, function(err, body) {
+            if (err) console.log(err);
+            if (!err) {
+                debug('Found CouchDB phone/by_date document');
+                res.json(body);
             
-            // cache this data into CouchDB
-            debug('looking up phone records for...  ' + req.user.username);
-            //saveToTheCouch(req.user, body, 'phone');
+                // cache this data into CouchDB
+                debug('looking up phone records for...  ' + req.user.username);
+                //saveToTheCouch(req.user, body, 'phone');
             
-        }
-    })
+            }
+        })
+    } else {
+        debug('could\'t find a twilio_sid for this user');
+    }
+
 }
 
 exports.phone_calls_by_caller = function(req, res){

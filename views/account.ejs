@@ -41,7 +41,7 @@
                    <style type="text/css">
                     #twilio-connect-button {
                         background: url(https://www.twilio.com/packages/connect-apps/images/connect-button.png);
-                        width: 130px; height: 34px; display: block; margin: 0 auto;
+                        width: 130px; height: 34px; display: block;
                     }
                     #twilio-connect-button:hover { background-position: 0 34px; }
                    </style>
@@ -50,7 +50,7 @@
                 <br>
                 <dt>Twilio SID:</dt> <dd><%= user.twilio_sid %></dd>
                 <dt>Twilio API Version:</dt> <dd><%= user.twilio_APIversion %></dd>
-                <dt># of Calls:</dt> <dd><% if(user.phone) { %><%= user.phone.calls_total %> <% } else { %> 0 <% } %></dd>
+                <dt># of Calls:</dt> <dd><% if(user.phone) { %><%= user.phone.total %> <% } else { %> 0 <% } %></dd>
                 <dt># of Texts:</dt> <dd><% if(user.sms) {  %> <%= user.sms.total %> <% } else { %> 0 <% } %></dd>
                 <dt># of Recordings:</dt> <dd><% if(user.rec) { %> <%= user.rec.total %> <% } else { %> 0 <% } %></dd>
                 <dt>Refresh Calls</dt><dd><a href="/#" id="refresh-phone"><i class="icon-refresh"></i></a></dd>
