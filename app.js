@@ -193,7 +193,7 @@ app.get('/contacts', routes.contacts);
 // routes/login.js
 app.get('/account', ensureAuthenticated, loginroutes.account);
 app.get('/auth', ensureAuthenticated, loginroutes.auth);
-app.get('/auth', ensureAuthenticated, loginroutes.deauth);
+app.get('/deauth', ensureAuthenticated, loginroutes.deauth);
 app.get('/login', loginroutes.login);
 app.post('/login', passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }), loginroutes.post_login);
 app.get('/logout', loginroutes.logout);

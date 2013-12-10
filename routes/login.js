@@ -29,26 +29,35 @@ exports.account = function(req, res){
 };
 
 //      GET /auth
-exports.account = function(req, res){
-    db.get(req.parmas.state, function(err, data) {
+exports.auth = function(req, res){
+    if(!!req.param('AccountSid')) {
+        debug('could not find req.params ', req.params)
+        //res.redirect('/account');
+        //res.render('account', { user: req.user });
+    }
+
+    debug('DEBUG: req.params = ', req.param('AccountSid'), req.param('state'));
+
+    db.get(req.param('state'), function(err, data) {
         
-        data.twilio_sid = req.parmas.accountSid;
-        data.twilio_auth = req.body.twilio_auth;
-        data.twilio_version = req.body.twilio_version;
+        data.twilio_sid = req.param('AccountSid');
+        data.twilio_auth = '8ca2e65eb343b274d912c241aeb98d55';
+        data.twilio_version = '/2010-04-01';
         
         db.insert(data, data._id, function(err, doc)  {
             if (err)  console.log(err)
             if (!err) {
                 debug(req.user.username + " updated at " + new Date());
-                res.redirect('/account');
+                //res.redirect('/account');
+                res.render('account', { user: req.user });
             }
         });
-                
     });
+
 };
 
 //      GET /deauth
-exports.account = function(req, res){
+exports.deauth = function(req, res){
   res.render('deauth', { user: req.user });
 };
 
@@ -84,7 +93,7 @@ exports.update_account = function(req, res) {
         data.email = req.body.email;
         data.twilio_sid = req.body.twilio_sid;
         data.twilio_auth = req.body.twilio_auth;
-        data.twilio_version = req.body.twilio_version;
+        data.twilio_APIversion = req.body.twilio_version;
         
         db.insert(data, data._id, function(err, doc)  {
             if (err)  console.log(err)
@@ -125,9 +134,11 @@ exports.signup = function(req, res) {
         data.password = req.body.s_password;
         data.email = req.body.s_email;
         data.created = new Date();
-        data.phone = {};
-        data.sms = {};
-        data.rec = {};
+        data.phone = { calls: [], total: 0 };
+        data.sms = { sms_messages: [], total: 0 };
+        data.rec = { recordings: [], total: 0 };
+        data.twilio_APIversion = '/2010-04-01';
+        data.twilio_versions = '/2010-04-01';
         
         db.insert(data, function(err, doc)  {
             if(err)  console.log(err)
