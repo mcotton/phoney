@@ -8,7 +8,8 @@ var request = require('request');
  
 exports.bydate = function(req, res){
   var path = req.params.id || 'outbound-dial'
-  res.render('phone/phone_backbone', { user: req.user, path: path, title: 'Express' })
+  //res.render('phone/phone_backbone', { user: req.user, path: path, title: 'Express' })
+  res.render('phone/phone_calls_by_date', { user: req.user, path: path, title: 'Express' })
 };
 
 exports.bycaller = function(req, res){
