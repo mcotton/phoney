@@ -22,6 +22,10 @@ exports.search = function(req, res){
   res.render('sms/sms_search', { user: req.user, title: 'Express' })
 };
 
+exports.compose = function(req, res){
+  res.render('sms/sms_compose', { user: req.user, title: 'Express' })
+};
+
 exports.callerdetail = function(req, res){
   res.render('sms/sms_caller_detail', { user: req.user, id: req.params.id, title: 'Express' })
 };

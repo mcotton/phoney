@@ -219,6 +219,7 @@ app.get('/sms/bycaller', ensureAuthenticated, smsroutes.bycaller);
 app.get('/sms/byreceiver', ensureAuthenticated, smsroutes.byreceiver);
 app.get('/sms/search', ensureAuthenticated, smsroutes.search);
 app.get('/sms/callerdetail/:id', ensureAuthenticated, smsroutes.callerdetail);
+app.get('/sms/compose', ensureAuthenticated, smsroutes.compose);
 
 
 app.listen(3000, function(){
