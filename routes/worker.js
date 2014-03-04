@@ -43,8 +43,8 @@ exports.phone = function(req, res) {
     } else {
     
         debug('Fetching next page of data')
-        debug(makeURL(u, u.phone.next_page_uri))
-        fetchData(u, makeURL(u, u.phone.next_page_uri))
+        debug(u.phone.next_page_uri)
+        fetchData(u, u.phone.next_page_uri)
     
     }
     
@@ -70,7 +70,8 @@ function fetchData(u, _url) {
              u.phone.call_start = b.start
              u.phone.call_end = b.end
              u.phone.calls = u.phone.calls.concat(b.calls) 
-             
+            
+             debug('inside of fetchDate and comparing ' + u.phone.calls_total  + '  with ' +  u.phone.calls.length)
              if(u.phone.calls_total > u.phone.calls.length) {
                  
                  debug('There are more calls to fetch')
